@@ -18,7 +18,7 @@ Nesta seção:
 * O usuário deve ter as seguintes informações salvas na seção [**Configurações > Meu perfil > Dados Pessoais**](https://app.zapsign.com.br/conta/perfil): **nome, sobrenome, telefone, assinatura e visto**.
 * **A assinatura via API não consome créditos (é gratuita).**\
   No entanto, é necessário ter um **Plano API ativo** para usar esse endpoint, incluindo o **add-on de assinatura em lote**.
-* A assinatura em lote só funciona com autenticação por **"assinatura na tela", "selfie" e "foto do documento de identidade" e "CPF Simples"** sem preencher o CPF na criação do documento.\
+* A assinatura em lote só funciona com autenticação por **"assinatura na tela" e "CPF Simples"** sem preencher o CPF na criação do documento.\
   Se o documento possuir outro método de autenticação, **não será possível assinar esses documentos.**
 
 Com essa funcionalidade, você poderá economizar tempo e tornar o processo de assinatura mais eficiente para sua equipe! 🚀

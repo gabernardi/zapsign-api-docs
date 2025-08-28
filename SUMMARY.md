@@ -146,7 +146,7 @@
 * [Adicionar anexo (documento extra)](documentos/adicionar-anexo-documento-extra.md)
 * [Adicionar anexo (documento extra) via Modelo](documentos/adicionar-anexo-documento-extra-1.md)
 * [Detalhar documento](documentos/detalhar-documento.md)
-* [Update document](documentos/update-document/README.md)
+* [Atualizar documento](documentos/update-document/README.md)
   * [Reordenar documentos de um envelope](documentos/update-document/reorder-envelope.md)
 * [Listar documentos](documentos/listar-documentos.md)
 * [Excluir documento](documentos/excluir-documento.md)

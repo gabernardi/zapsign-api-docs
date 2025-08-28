@@ -45,7 +45,15 @@ Em dúvida sobre como encontrar seu signer token? Consulte a seção [Tipos de t
         "email": 0,
         "sms": 0
     },
-    "send_automatic_whatsapp_signed_file": false
+    "cpf": "",
+    "cnpj": "",
+    "send_automatic_whatsapp_signed_file": false,
+    "liveness_photo_url": "",
+    "selfie_validation_type": "none",
+    "ip": null,
+    "delegator": null,
+    "signature_anchor_text": "<<signer1>>",
+    "rubrica_anchor_text": "<<vistoSigner1>>"
 }
 ```
 {% endtab %}

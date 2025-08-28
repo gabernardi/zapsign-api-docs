@@ -84,6 +84,13 @@ https://api.zapsign.com.br/api/v1/docs/?page=&#x31;**\&deleted=false**
 **Apenas documentos excluídos:**\
 https://api.zapsign.com.br/api/v1/docs/?page=&#x31;**\&deleted=true**
 
+### Filtrando por signatários
+
+Caso você queira filtrar por signatário, acrescente ao GET o parâmetro opcional "signer\_email". Por exemplo:
+
+**Por e-mail do signatário:**\
+https://api.zapsign.com.br/api/v1/docs/?page=&#x31;**\&signer\_email=email@zapsign.com.br**
+
 ### Filtrando documentos por status
 
 Caso você deseje filtrar documentos assinados, em curso ou recusados, acrescente ao GET o parâmetro opcional "status". Por exemplo:

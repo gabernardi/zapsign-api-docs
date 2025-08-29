@@ -10,18 +10,35 @@ Nesta seção:
 
 ***
 
-### Requisitos prévios:
+### Pré-requisitos:
 
 * Você só pode assinar via API com usuários dentro da sua conta.\
   Isso significa que os signatários devem estar registrados como usuários na sua conta, configurados na seção **Configurações > Organização > Usuários**. Não é possível assinar para terceiros ou clientes externos que não sejam usuários da sua conta.
 * Só é possível assinar documentos que tenham o **e-mail do signatário vazio ou igual ao do usuário** que está assinando os documentos. Caso o e-mail seja diferente, **não será possível assinar.**
 * O usuário deve ter as seguintes informações salvas na seção [**Configurações > Meu perfil > Dados Pessoais**](https://app.zapsign.com.br/conta/perfil): **nome, sobrenome, telefone, assinatura e visto**.
 * **A assinatura via API não consome créditos (é gratuita).**\
-  No entanto, é necessário ter um **Plano API ativo** para usar esse endpoint, incluindo o **add-on de assinatura em lote**.
-* A assinatura em lote só funciona com autenticação por **"assinatura na tela" e "CPF Simples"** sem preencher o CPF na criação do documento.\
-  Se o documento possuir outro método de autenticação, **não será possível assinar esses documentos.**
+  No entanto, é necessário ter **Plano API ativo** e **add-on de assinatura em lote**.
 
-Com essa funcionalidade, você poderá economizar tempo e tornar o processo de assinatura mais eficiente para sua equipe! 🚀
+### Autenticação suportada:
+
+**Autenticação Padrão:**
+
+* A assinatura em lote só funciona com autenticação padrão: **"assinatura na tela".**
+
+**Autenticações avançadas (são opcionais - se selecionadas na criação do documento):**
+
+* "CPF Simples"&#x20;
+  * Não é obrigatório o preenchimento do CPF na criação do documento, mas é obrigatório enviá-lo no body da requisição quandoo essa opção for selecionada.
+  * Requisito: necessário possuir CPF cadastrado em Configurações > Meu Perfil > Informações Pessoais.
+* "Selfie"
+  * Quando essa opção for selecionada na criação do documento, é obrigatório enviar o campo "selfie\_photo" no body da requisição.
+*   "Foto do documento de identidade"
+
+    * Ao selecionar essa opção na criação do documento, é obrigatório enviar os campos "document\_photo\_url" e "document\_verse\_photo\_url".
+
+    Se o documento tiver **qualquer outro método de autenticação avançada não listado acima**, não será possível assinar esses documentos.
+
+
 
 <mark style="color:green;">`POST`</mark> `https://api.zapsign.com.br/api/v1/sign`
 
@@ -33,11 +50,10 @@ Com essa funcionalidade, você poderá economizar tempo e tornar o processo de a
 
 #### Request Body
 
-<table><thead><tr><th>Name</th><th width="136">Type</th><th>Description</th></tr></thead><tbody><tr><td>user_token<mark style="color:red;">*</mark></td><td>string</td><td>Token do usuário que irá assinar.</td></tr><tr><td>signer_tokens[]</td><td>array</td><td>Tokens que serão assinados (token do signer em cada documento a ser assinado). </td></tr><tr><td>selfie_photo</td><td>string</td><td>Deve ser uma URL publicamente acessível contendo a imagem da selfie, aceita nos formatos JPG, JPEG ou PNG.</td></tr><tr><td>document_photo_url</td><td>string</td><td>Deve ser uma URL publicamente acessível contendo a imagem frontal do documento, aceita nos formatos JPG, JPEG ou PNG.</td></tr><tr><td>document_verse_photo_url</td><td>string</td><td>Deve ser uma URL publicamente acessível contendo a imagem traseira do documento, aceita nos formatos JPG, JPEG ou PNG.</td></tr><tr><td>cpf</td><td>string</td><td>String que representa o número de CPF do usuário, composta por 11 dígitos numéricos, com ou sem pontuação.</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th width="136">Type</th><th>Description</th></tr></thead><tbody><tr><td>user_token<mark style="color:red;">*</mark></td><td>string</td><td>Token do usuário que irá assinar.</td></tr><tr><td>signer_tokens[]<mark style="color:red;">*</mark></td><td>array</td><td>Tokens que serão assinados (token do signer em cada documento a ser assinado). </td></tr><tr><td>selfie_photo</td><td>string</td><td>Deve ser uma URL publicamente acessível contendo a imagem da selfie, aceita nos formatos JPG, JPEG ou PNG.</td></tr><tr><td>document_photo_url</td><td>string</td><td>Deve ser uma URL publicamente acessível contendo a imagem frontal do documento, aceita nos formatos JPG, JPEG ou PNG.</td></tr><tr><td>document_verse_photo_url</td><td>string</td><td>Deve ser uma URL publicamente acessível contendo a imagem traseira do documento, aceita nos formatos JPG, JPEG ou PNG.</td></tr><tr><td>cpf</td><td>string</td><td>String que representa o número de CPF do usuário, composta por 11 dígitos numéricos, com ou sem pontuação.</td></tr></tbody></table>
 
 ### Como utilizar o Postman para assinar em lote
 
-\
 O Postman é um grande aliado para assinar rapidamente seus documentos. **Comece configurando o endpoint e adicionando seu API Token na aba&#x20;**_**Authorization**_**.** Depois, **acesse seu perfil na plataforma para pegar o&#x20;**_**user token**_ e reúna os _**signer tokens**_ dos documentos que serão assinados.&#x20;
 
 ![Usuário assinando um documento via endpoint de assinatura em lote.](https://github.com/AmandaAmani/documenta-ocurso/blob/main/requisi%C3%A7%C3%A3o%20api.gif?raw=true)
@@ -46,14 +62,14 @@ O Postman é um grande aliado para assinar rapidamente seus documentos. **Comece
 
 {% embed url="https://www.postman.com/zapsign/workspace/zapsign-workspace/request/27495556-13470670-e542-4cc2-bf8d-0e0538dba086?ctx=documentation" %}
 
-| Name                                          | Type   | Description                                                                                                             |
-| --------------------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------- |
-| user\_token<mark style="color:red;">\*</mark> | string | Token do usuário que irá assinar.                                                                                       |
-| signer\_tokens\[]                             | array  | Tokens que serão assinados (token do signer em cada documento a ser assinado).                                          |
-| selfie\_photo                                 | string | Deve ser uma URL acessível publicamente contendo a imagem da selfie, aceita nos formatos JPG, JPEG ou PNG.              |
-| document\_photo\_url                          | string | Deve ser uma URL acessível publicamente contendo a imagem da frente do documento, aceita nos formatos JPG, JPEG ou PNG. |
-| document\_verse\_photo\_url                   | string | Deve ser uma URL acessível publicamente contendo a imagem do verso do documento, aceita nos formatos JPG, JPEG ou PNG.  |
-| cpf                                           | string | String representando o número do CPF do usuário. Deve conter 11 dígitos numéricos, com ou sem pontuação.                |
+| Name                                                | Type   | Description                                                                                                             |
+| --------------------------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------- |
+| user\_token<mark style="color:red;">\*</mark>       | string | Token do usuário que irá assinar.                                                                                       |
+| signer\_tokens\[]<mark style="color:red;">\*</mark> | array  | Tokens que serão assinados (token do signer em cada documento a ser assinado).                                          |
+| selfie\_photo                                       | string | Deve ser uma URL acessível publicamente contendo a imagem da selfie, aceita nos formatos JPG, JPEG ou PNG.              |
+| document\_photo\_url                                | string | Deve ser uma URL acessível publicamente contendo a imagem da frente do documento, aceita nos formatos JPG, JPEG ou PNG. |
+| document\_verse\_photo\_url                         | string | Deve ser uma URL acessível publicamente contendo a imagem do verso do documento, aceita nos formatos JPG, JPEG ou PNG.  |
+| cpf                                                 | string | String representando o número do CPF do usuário. Deve conter 11 dígitos numéricos, com ou sem pontuação.                |
 
 **Exemplos de respostas**
 

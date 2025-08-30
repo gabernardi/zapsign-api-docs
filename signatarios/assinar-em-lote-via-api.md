@@ -1,6 +1,12 @@
 # Assinar em lote via API
 
 Se a sua empresa frequentemente precisa assinar muitos documentos, este endpoint oferece uma maneira eficiente de realizar essas assinaturas sem a necessidade de acessar manualmente cada documento. Com a **assinatura em lote, você economiza tempo e automatiza o processo de assinatura de múltiplos documentos!**\
+
+
+### Assinar em lote via API:
+
+<mark style="color:green;">`POST`</mark> `https://api.zapsign.com.br/api/v1/sign/`
+
 \
 Nesta seção:
 

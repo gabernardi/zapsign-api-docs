@@ -46,8 +46,6 @@ Nesta seção:
 
 
 
-<mark style="color:green;">`POST`</mark> `https://api.zapsign.com.br/api/v1/sign`
-
 #### Headers
 
 | Name                                            | Type   | Description                                                                                     |

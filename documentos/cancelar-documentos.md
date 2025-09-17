@@ -14,7 +14,7 @@ Este endpoint permite interromper o fluxo de assinatura em casos de problemas no
 
 ### Exemplo de requisição
 
-<mark style="color:yellow;">`POST`</mark>  [`https://api.zapsign.com.br/api/v1`](https://api.zapsign.com.br/api/v1/docs/%7Btoken%7D/resend-notifications-bulk/)`/refuse/`&#x20;
+<mark style="color:yellow;">`POST`</mark>  `https://api.zapsign.com.br/api/v1/refuse/`
 
 #### Body
 

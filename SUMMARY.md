@@ -152,7 +152,6 @@
 * [Excluir documento](documentos/excluir-documento.md)
 * [Histórico de atividades do documento](documentos/historico-de-atividades-do-documento.md)
 * [Opcional: Posicionar assinaturas](documentos/opcional-posicionar-assinaturas.md)
-* [Reprovar documentos](documentos/reprovar-documentos.md)
 * [Validação de assinaturas](documentos/validacao-de-assinaturas.md)
 * [Cancelar documentos](documentos/cancelar-documentos.md)
 

@@ -8,15 +8,24 @@ Este endpoint permite interromper o fluxo de assinatura em casos de problemas no
 
 * **Permissões**: Pode ser usado por administradores, proprietários ou grupo com acesso.
 * **Estado final**: O documento fica com status "recusado" e não pode mais ser assinado.
-* **Marca d'água**: Adiciona marca d'água no PDF final indicando o cancelamento.
+* **Marca d'água**: Adiciona marca d'água "Documento recusado" no PDF final indicando o cancelamento.
 * **Webhook**: Pode disparar o webhook "doc\_signed" após o cancelamento (PDF atualizado).
+* Estado do documento: Deve estar "em andamento" para poder ser cancelado
 * **User-Agent**: Header obrigatório para evitar spam.
 
-### Exemplo de requisição
+###
 
-<mark style="color:green;">`POST`</mark>`https://api.zapsign.com.br/api/v1/refuse/`
+<mark style="color:green;">**`POST`**</mark>` ``https://api.zapsign.com.br/api/v1/refuse/`
 
-#### Body
+#### Headers
+
+<table><thead><tr><th width="160">Name</th><th width="117">Type</th><th>Description</th></tr></thead><tbody><tr><td>Authorization<mark style="color:red;">*</mark></td><td>string</td><td><p>Api token a frente do texto "Bearer". </p><p></p><p>Ex: Bearer c7f35c84-7893-4087-b4fb-d1f06c23</p></td></tr></tbody></table>
+
+#### Request Body
+
+<table><thead><tr><th width="167">Name</th><th width="107">Type</th><th>Description</th></tr></thead><tbody><tr><td>doc_token<mark style="color:red;">*</mark></td><td>string</td><td>Token do documento</td></tr><tr><td>rejected_reason<mark style="color:red;">*</mark></td><td>string</td><td>Motivo do cancelamento do documento. Esta informação estará disponível na plataforma web em detalhes do documento</td></tr></tbody></table>
+
+#### Exemplo do body
 
 ```json
 {
@@ -24,12 +33,6 @@ Este endpoint permite interromper o fluxo de assinatura em casos de problemas no
   "rejected_reason": "Documento cancelado pela empresa"
 }
 ```
-
-#### Headers
-
-| Name                                            | Type   | Description                                                                                            |
-| ----------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------ |
-| Authorization<mark style="color:red;">\*</mark> | string | <p>Api token a frente do texto "Bearer". </p><p></p><p>Ex: Bearer c7f35c84-7893-4087-b4fb-d1f06c23</p> |
 
 #### Resposta (200)
 

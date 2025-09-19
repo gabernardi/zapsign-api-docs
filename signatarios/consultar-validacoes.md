@@ -27,7 +27,7 @@ O endpoint retorna todas as tentativas feitas pelo signatário, permitindo acomp
     "validations": [
         {
             "validation_number": "cd461e6a-a5d5-4bd7-8e50-20263c9f64a9",
-            "status": "approved",
+            "status": "success",
             "reason": "",
             "created_at": "2025-06-05T18:51:26.286366Z",
             "document_photo_url": "https://zapsign.s3.amazonaws.com",
@@ -43,7 +43,13 @@ O endpoint retorna todas as tentativas feitas pelo signatário, permitindo acomp
                 "date_of_birth": "1980-01-01",
                 "document_country": "BR"
             }
-        }
+        },
+        {
+            "type": "Name validation",
+            "status": "success",
+            "reason": "",
+            "created_at": "2025-06-05T18:51:26.286366Z",
+        },
     ]
 }
 
@@ -53,4 +59,4 @@ O endpoint retorna todas as tentativas feitas pelo signatário, permitindo acomp
 
 O campo `selfie_validation_type` indica qual método de validação foi utilizado. O endpoint retorna as validações referentes aos seguintes métodos:
 
-<table><thead><tr><th width="256">Selfie_validation_type</th><th>Descrição</th></tr></thead><tbody><tr><td><code>liveness-document-match</code></td><td>Reconhecimento facial com upload do documento de identidade e gravação do rosto. Valida se a pessoa é a mesma do documento.</td></tr><tr><td><code>liveness-NXCD</code></td><td>Valida se a pessoa está presente na assinatura através de vídeo passivo (liveness).</td></tr><tr><td><code>face-match-and-datavalid</code></td><td>Autenticação facial com verificação nos dados do governo (Serpro), confirmando CPF e CNH. Somente Brasil.</td></tr><tr><td><code>identity-verification-global</code></td><td>Validação global da identidade, incluindo autenticação do documento e reconhecimento facial.</td></tr></tbody></table>
+<table><thead><tr><th width="256">Selfie_validation_type</th><th>Descrição</th></tr></thead><tbody><tr><td><code>liveness-document-match</code></td><td>Reconhecimento facial com upload do documento de identidade e gravação do rosto. Valida se a pessoa é a mesma do documento.</td></tr><tr><td><code>liveness-NXCD</code></td><td>Valida se a pessoa está presente na assinatura através de vídeo passivo (liveness).</td></tr><tr><td><code>face-match-and-datavalid</code></td><td>Autenticação facial com verificação nos dados do governo (Serpro), confirmando CPF e CNH. Somente Brasil.</td></tr><tr><td><code>identity-verification-global</code></td><td>Validação global da identidade, incluindo autenticação do documento e reconhecimento facial.</td></tr><tr><td><code>identity-verification</code></td><td>Validação da identidade, incluindo autenticação do documento e reconhecimento facial.</td></tr></tbody></table>

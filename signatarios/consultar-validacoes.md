@@ -26,6 +26,7 @@ O endpoint retorna todas as tentativas feitas pelo signatário, permitindo acomp
     "selfie_validation_type": "identity-verification-global",
     "validations": [
         {
+            "type": "Identity verification",
             "validation_number": "cd461e6a-a5d5-4bd7-8e50-20263c9f64a9",
             "status": "success",
             "reason": "",
@@ -33,7 +34,6 @@ O endpoint retorna todas as tentativas feitas pelo signatário, permitindo acomp
             "document_photo_url": "https://zapsign.s3.amazonaws.com",
             "document_verse_photo_url": "https://zapsign.s3.amazonaws.com/",
             "selfie_photo_url": "",
-            "selfie_photo_url2": "",
             "document_ocr": {
                 "process_id": "cd461e6a-a5d5-4bd7-8e50-20263c9f64a9",
                 "name": "MARIA",

@@ -55,8 +55,51 @@ O endpoint retorna todas as tentativas feitas pelo signatário, permitindo acomp
 
 ```
 
-#### Sobre o campo `selfie_validation_type`
+### Sobre o resultado da validação
 
-O campo `selfie_validation_type` indica qual método de validação foi utilizado. O endpoint retorna as validações referentes aos seguintes métodos:
+Este endpoint permite consultar o **resultado do processo de validação** definido no parâmetro `selfie_validation_type`.&#x20;
 
-<table><thead><tr><th width="256">Selfie_validation_type</th><th>Descrição</th></tr></thead><tbody><tr><td><code>liveness-document-match</code></td><td>Reconhecimento facial com upload do documento de identidade e gravação do rosto. Valida se a pessoa é a mesma do documento.</td></tr><tr><td><code>liveness-NXCD</code></td><td>Valida se a pessoa está presente na assinatura através de vídeo passivo (liveness).</td></tr><tr><td><code>face-match-and-datavalid</code></td><td>Autenticação facial com verificação nos dados do governo (Serpro), confirmando CPF e CNH. Somente Brasil.</td></tr><tr><td><code>identity-verification-global</code></td><td>Validação global da identidade, incluindo autenticação do documento e reconhecimento facial.</td></tr><tr><td><code>identity-verification</code></td><td>Validação da identidade, incluindo autenticação do documento e reconhecimento facial.</td></tr></tbody></table>
+Cada tipo de validação possui **etapas específicas** que verificam diferentes aspectos do documento e/ou do rosto do signatário. Dentro de cada etapa existem **sub-validações**, e para cada uma delas a resposta do endpoint retorna:
+
+* O **status** (sucesso ou falha).
+* O campo **reason**, que explica o motivo da falha, quando aplicável.
+
+A seguir estão detalhados os diferentes tipos de validação disponíveis e as etapas correspondentes.
+
+#### liveness-document-match
+
+Este método realiza duas validações principais
+
+* **Document recognition:** verifica se a foto enviada da frente do documento realmente corresponde a um documento de identidade e se contém uma foto
+  * Importante: não aplica modelos avançados de fraude nem identifica casos de “documento em foto”.
+* **Face match:** compara o vídeo passivo do rosto do signatário com a foto do documento apresentado, garantindo que se trata da mesma pessoa. O resultado inclui a URL da foto de rosto capturada.
+
+Se as duas validações forem bem-sucedidas, o signatário está autorizado a concluir a assinatura do documento.
+
+#### face-match-and-datavalid&#x20;
+
+_Disponível apenas para Brasil – CNH._ Este método realiza uma única validação:
+
+* Compara o nome e CPF com as bases da Serpro, além de verificar se coincidem com a pessoa identificada no vídeo passivo feito durante a assinatura.
+
+#### identity-verification-global
+
+Este método realiza três validações complementares:
+
+* **Identity verification**: valida se o documento é real utilizando modelos de detecção de fraude e retorna os dados extraídos automaticamente (ocr), incluindo:
+  * `name`
+  * `last_name`
+  * `document_type`
+  * `document_number`
+  * `date_of_birth`
+  * `document_country`
+* **Name validation:** compara o nome extraído do documento com o nome informado pelo signatário. A validação é considerada aprovada se a similaridade for maior que 75%.
+* **Validação de CPF** (Brasil): quando o documento for do Brasil e contiver CPF, é feita uma verificação automática junto à Receita Federal.
+
+#### identity-verification&#x20;
+
+_Disponível para Colômbia, México, Chile e Peru._ Este método realiza duas validações:
+
+* **Identity verification**: valida que o documento é real com modelos de fraude, realiza consulta em bases de dados do governo e garante que o vídeo passivo corresponda à mesma pessoa do documento.
+* **Name validation:** compara o nome extraído do documento com o nome informado pelo signatário, aplicando a mesma lógica de similaridade usada no método _identity-verification-global_.
+

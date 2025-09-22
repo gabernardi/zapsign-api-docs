@@ -16,9 +16,7 @@ Não são permitidas alterações em documentos que já possuam assinaturas feit
 
 #### Headers
 
-| Name                                            | Type   | Description                                                                                     |
-| ----------------------------------------------- | ------ | ----------------------------------------------------------------------------------------------- |
-| Authorization<mark style="color:red;">\*</mark> | string | <p>Api token a frente do texto "Bearer". </p><p>Ex: Bearer c7f35c84-7893-4087-b4fb-d1f06c23</p> |
+<table><thead><tr><th width="157">Name</th><th width="116">Type</th><th>Description</th></tr></thead><tbody><tr><td>Authorization<mark style="color:red;">*</mark></td><td>string</td><td><p>Api token a frente do texto "Bearer". </p><p>Ex: Bearer c7f35c84-7893-4087-b4fb-d1f06c23</p></td></tr></tbody></table>
 
 #### Request Body
 

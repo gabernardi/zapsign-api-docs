@@ -9,7 +9,7 @@ Para facilitar o teste de webhooks sem precisar configurar um servidor local, fe
 
 **Passo 1**: Acesse [Webhook.site](https://webhook.site/).
 
-**Passo 2**: Na página inicial, você verá um URL exclusivo gerado automaticamenteEste será o seu **endpoint** para receber os webhooks.
+**Passo 2**: Na página inicial, você verá um URL exclusivo gerado automaticamente. Este será o seu **endpoint** para receber os webhooks.
 
 **Passo 3**: Deixe essa aba aberta, pois é aqui que você visualizará os dados que serão enviados pelo webhook da ZapSign.
 

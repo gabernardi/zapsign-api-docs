@@ -2,7 +2,7 @@
 
 <mark style="color:green;">`POST`</mark>`https://api.zapsign.com.br/api/v1/refuse/by-user/`
 
-**Descrição:** Este endpoint permite reprovar um documento individual ou um envelope (conjunto de documentos em lote) enviando as informações necessárias no corpo da requisição.
+Este endpoint permite reprovar um documento individual ou um envelope (conjunto de documentos em lote) enviando as informações necessárias no corpo da requisição.
 
 #### Como Usar:
 

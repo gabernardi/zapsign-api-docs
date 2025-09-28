@@ -1,6 +1,6 @@
 # Opcional: Posicionar assinaturas
 
-## Posicionamento com âncoras na criação do documento
+## Posicionamento com âncoras de texto
 
 **É possível definir onde as assinaturas e rubricas serão inseridas** em documentos **PDF ou DOCX** usando **textos âncora**.
 

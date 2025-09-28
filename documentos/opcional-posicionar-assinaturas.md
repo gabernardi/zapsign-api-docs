@@ -2,9 +2,32 @@
 
 ## Posicionamento com âncoras na criação do documento
 
-Ao criar documentos pela API da ZapSign, é possível posicionar automaticamente as assinaturas e rubricas no conteúdo do arquivo PDF ou DOCX utilizando **âncoras de texto**.\
-\
-Criar documento via Upload: [https://docs.zapsign.com.br/documentos/criar-documento](https://docs.zapsign.com.br/documentos/criar-documento)
+**É possível definir onde as assinaturas e rubricas serão inseridas** em documentos **PDF ou DOCX** usando **textos âncora**.
+
+Basta inserir um identificador, como `"<<signer1>>"`, no documento, e a plataforma posicionará automaticamente a assinatura ou rubrica **no exato local onde esse texto aparecer**.
+
+> **Dica:** utilize `<< >>` para evitar conflitos com palavras comuns do documento.
+
+#### **Campos**
+
+* **`signature_placement`**: define o local da **assinatura** usando texto âncora.\
+  Exemplo: `"signature_placement": "<<signer1>>"`
+* **`rubrica_placement`**: define o local da **rubrica** usando texto âncora.\
+  Exemplo: `"rubrica_placement": "<<signer1Rubrica>>"`
+
+Se o texto aparecer mais de uma vez, a assinatura ou rubrica será posicionada em **todos os locais**.
+
+#### **Onde usar âncoras**
+
+As âncoras podem ser configuradas nos endpoints:
+
+[Criar documento via Upload](https://docs.zapsign.com.br/documentos/criar-documento)&#x20;
+
+[Criar documento via Modelo](https://docs.zapsign.com.br/documentos/criar-documento-via-modelo)
+
+[Adicionar signatário](https://docs.zapsign.com.br/signatarios/adicionar-signatario)
+
+[Atualizar signatário](https://docs.zapsign.com.br/signatarios/atualizar-signatario)
 
 ## Posicionamento com coordenadas no endpoint posicionar assinaturas
 

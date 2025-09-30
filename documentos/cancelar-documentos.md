@@ -23,7 +23,7 @@ Este endpoint permite interromper o fluxo de assinatura em casos de problemas no
 
 #### Request Body
 
-<table><thead><tr><th width="167">Name</th><th width="107">Type</th><th>Description</th></tr></thead><tbody><tr><td>doc_token<mark style="color:red;">*</mark></td><td>string</td><td>Token do documento</td></tr><tr><td>rejected_reason<mark style="color:red;">*</mark></td><td>string</td><td>Motivo do cancelamento do documento. Esta informação estará disponível na plataforma web em detalhes do documento</td></tr></tbody></table>
+<table><thead><tr><th width="167">Name</th><th width="107">Type</th><th>Description</th></tr></thead><tbody><tr><td>doc_token<mark style="color:red;">*</mark></td><td>string</td><td>Token do documento</td></tr><tr><td>rejected_reason<mark style="color:red;">*</mark></td><td>string</td><td>Motivo do cancelamento do documento. Esta informação estará disponível na plataforma web em detalhes do documento</td></tr><tr><td>notify_signer</td><td>boolean</td><td>Se true, notifica os signatários por e-mail quando o documento for cancelado. Se false, nenhuma notificação é enviada. Default: false.</td></tr></tbody></table>
 
 #### Exemplo do body
 

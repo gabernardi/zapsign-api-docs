@@ -6,7 +6,7 @@ Este endpoint permite o envio de notificação em massa para todos os signatári
 
 ### Exemplo de requisição
 
-<mark style="color:yellow;">`POST`</mark>  [`https://api.zapsign.com.br/api/v1/docs/{token}/resend-notification-bulk/`](https://api.zapsign.com.br/api/v1/docs/%7Btoken%7D/resend-notifications-bulk/)
+<mark style="color:yellow;">`POST`</mark>  [`https://api.zapsign.com.br/api/v1/docs/{token}/resend-notifications-bulk/`](https://api.zapsign.com.br/api/v1/docs/%7Btoken%7D/resend-notifications-bulk/)
 
 **Corpo**: não requer body específico
 

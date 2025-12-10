@@ -1,7 +1,6 @@
 # Informações gerais
 
-Zapsign é uma plataforma de assinatura eletrônica de documentos que cumpre os requisitos da Medida Provisória 2.200-2/2001, garantindo autenticidade, integridade e não repúdio. Assim, todas as assinaturas realizadas através da ZapSign possuem validade jurídica.\
-
+Zapsign é uma plataforma de assinatura eletrônica de documentos que cumpre os requisitos da Medida Provisória 2.200-2/2001, garantindo autenticidade, integridade e não repúdio. Assim, todas as assinaturas realizadas através da ZapSign possuem validade jurídica.<br>
 
 {% hint style="info" %}
 Se você ainda não realizou nenhuma integração com a ZapSign, recomendamos que você inicie pelo ambiente de testes (sandbox) [clicando aqui](https://sandbox.app.zapsign.com.br/acesso/entrar) para evitar cobranças.

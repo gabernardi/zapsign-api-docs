@@ -16,8 +16,7 @@ Nesta seção:\
 ### Configurando documento
 
 \
-Na configuração do documento, você define as propriedades básicas para criar e gerenciar um documento na plataforma. Esses campos incluem o nome, status inicial, e URLs do arquivo original e assinado, formando a estrutura essencial do documento. Essa etapa garante que o documento esteja corretamente identificado e acessível ao longo de todo o processo de assinatur&#x61;**.Você deverá enviar os dados em JSON, bem como receberá eles nesse mesmo formato.**\
-
+Na configuração do documento, você define as propriedades básicas para criar e gerenciar um documento na plataforma. Esses campos incluem o nome, status inicial, e URLs do arquivo original e assinado, formando a estrutura essencial do documento. Essa etapa garante que o documento esteja corretamente identificado e acessível ao longo de todo o processo de assinatur&#x61;**.Você deverá enviar os dados em JSON, bem como receberá eles nesse mesmo formato.**<br>
 
 <mark style="color:green;">`POST`</mark> `https://api.zapsign.com.br/api/v1/docs/`
 
@@ -54,6 +53,8 @@ Na configuração do documento, você define as propriedades básicas para criar
 | disable\_signers\_get\_original\_file  | boolean        | <p>Se verdadeiro, os signatários não tem a opção de baixar o documento original. </p><p>Default: false.</p>                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Metadata                               | Array          | Metadados personalizados enviados na criação do documento, no formato de pares `key` e `value`. Essas informações aparecem apenas nos webhooks de criação, assinatura, recusa e exclusão.                                                                                                                                                                                                                                                                                                                                     |
 | folder\_token                          | string         | <p>Se preenchido, este campo terá prioridade sobre <code>folder_path</code>. Ele define o diretório com base no <strong>token da pasta</strong>, que pode ser obtido acessando o seguinte endereço:<br><code>https://app.zapsign.com.br/conta/documentos?pasta=&#x3C;token_da_pasta></code></p><p>Se você ainda não souber o token, navegue até a pasta desejada a partir de:<br><code>https://app.zapsign.com.br/conta/documentos</code><br>e copie o valor do parâmetro <code>pasta</code> na URL após acessar a pasta.</p> |
+| has\_simplified\_signature             | boolean        | Se verdadeiro, ativa a assinatura simplificada para todos os signatários no local informado pelo parâmetro `simplified_signature_position`                                                                                                                                                                                                                                                                                                                                                                                    |
+| simplified\_signature\_position        | string         | <p></p><p>Define onde inserir o campo de assinatura simplificada. Valores aceitos:<br></p><p>"left": insere na lateral esquerda das páginas.<br></p><p>"bottom": insere no rodapé das páginas.<br></p><p>"right": insere na lateral direita das páginas.</p>                                                                                                                                                                                                                                                                  |
 
 {% tabs %}
 {% tab title="200 Documento criado com sucesso." %}
@@ -97,6 +98,21 @@ Na configuração do documento, você define as propriedades básicas para criar
 ```
 {% endtab %}
 {% endtabs %}
+
+#### Assinatura simplificada
+
+A assinatura simplificada substitui o desenho da assinatura por um bloco de texto com dados do(s) signatário(s). Esse bloco é inserido automaticamente e costuma aparecer na margem lateral da página. Parâmetros aceitos:
+
+`has_simplified_signature` (boolean): ativa a assinatura simplificada para todos os signatários.
+
+* true: insere o bloco de texto; não há campo de desenho.
+* false ou ausente: nenhum efeito de assinatura simplificada (fluxo normal de assinatura).
+
+`simplified_signature_position` (string): posiciona o bloco de texto.
+
+* "bottom": Insere a assinatura simplificada no rodapé das página.
+* "left":  Insere a assinatura simplificada na lateral esquerda das páginas.
+* "right"  Insere a assinatura simplificada na lateral direita das páginas.
 
 ### Configurando signatários
 
@@ -315,4 +331,3 @@ Não quer trabalhar com base64? **Suba seu PDF em uma url pública e use o parâ
 Tem alguma duvida? Utilize nossa inteligência artificial treinada com toda a documentação da API =)
 
 {% embed url="https://n8n.zapsign.com.br/webhook/fee2c476-7f23-4a4f-8928-5c7ab081ffcd/chat" %}
-

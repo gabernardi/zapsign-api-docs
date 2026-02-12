@@ -109,8 +109,7 @@ E também:\
 ### **relative\_size\_x e relative\_size\_y:&#x20;**_**Mantendo a proporção da assinatura**_
 
 * **Caso seu PDF seja uma folha A4 vertical (mais comum)**, recomenda-se utilizar sempre os valores **relative\_size\_x: 19.55** e **relative\_size\_y: 9.42**, como no exemplo acima. Se você quiser aumentar o tamanho da assinatura, multiplique-os pelo mesmo número, para que a razão seja mantida.
-  * Obs.: caso se trate de uma rubrica com type "**visto**", recomenda-se **relative\_size\_x: 13.76** e **relative\_size\_y: 9.42**\
-
+  * Obs.: caso se trate de uma rubrica com type "**visto**", recomenda-se **relative\_size\_x: 13.76** e **relative\_size\_y: 9.42**<br>
 * **Caso o PDF seja uma folha A4 horizontal**, recomendam-se os valores de **relative\_size\_x: 15.05** e **relative\_size\_y: 12.13.**
   * Obs.: caso se trate de uma rubrica com type "**visto**", recomenda-se **relative\_size\_x: 10.58** e **relative\_size\_y: 12.13**
 

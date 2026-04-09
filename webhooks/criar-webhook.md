@@ -8,8 +8,7 @@ Há **duas formas de criar um webhooks na ZapSign**, via **interface web** ou vi
 
 **Nesta seção:**\
 \
-[Criando webhooks via web;\
-](criar-webhook.md#criando-webhook-via-web)\
+[Criando webhooks via web;<br>](criar-webhook.md#criando-webhook-via-web)\
 [Criando webhooks via Api;](criar-webhook.md#criando-via-api) \
 [Configurando Headers para webhooks;](criar-webhook.md#configurando-headers-para-webhooks)
 
@@ -100,8 +99,7 @@ Verifique se seu API TOKEN está correto.
 
 ### Configurando headers para webhooks
 
-Também é possível implementar headers nos webhooks, garantindo maior segurança no envio de dados e otimizando o desempenho entre as aplicações.\
-
+Também é possível implementar headers nos webhooks, garantindo maior segurança no envio de dados e otimizando o desempenho entre as aplicações.<br>
 
 **Webhook** - raiz do JSON:
 
@@ -113,8 +111,7 @@ Também é possível implementar headers nos webhooks, garantindo maior seguran�
 
     * **value (string)** - Valor do cabeçalho HTTP a ser enviado.&#x20;
 
-    &#x20;     **Ex:** Bearer SEU\_TOKEN\_DE\_AUTENTICACAO\
-
+    &#x20;     **Ex:** Bearer SEU\_TOKEN\_DE\_AUTENTICACAO<br>
 
 <mark style="color:green;">`POST`</mark>` ``{{api_url}}/api/v1/user/company/webhook/header/`
 

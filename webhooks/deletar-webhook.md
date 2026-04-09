@@ -1,7 +1,6 @@
 # Deletar webhook
 
-Existem várias situações em que você pode precisar remover um webhook, como ao desativar integrações antigas ou reconfigurar endpoints. Para facilitar, você pode deletar um webhook diretamente pelo painel de controle, acessando **Configurações>Integrações>Api ZapSign>** [**Webhooks**](https://app.zapsign.com.br/conta/configuracoes/integration?tab=api-zapsign) e excluindo a url dos seus eventos.\
-
+Existem várias situações em que você pode precisar remover um webhook, como ao desativar integrações antigas ou reconfigurar endpoints. Para facilitar, você pode deletar um webhook diretamente pelo painel de controle, acessando **Configurações>Integrações>Api ZapSign>** [**Webhooks**](https://app.zapsign.com.br/conta/configuracoes/integration?tab=api-zapsign) e excluindo a url dos seus eventos.<br>
 
 ![Deletando webhooks via interface web.](https://github.com/AmandaAmani/documenta-ocurso/blob/main/deletando%20webhook.gif?raw=true)
 

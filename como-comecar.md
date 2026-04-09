@@ -23,8 +23,7 @@ Uma vez dentro da sua conta, navegue até **Configurações > Integrações > AP
 
 ### Pronto para começar!
 
-Com o seu Token de Acesso, você poderá **se autenticar** nos **endpoints** da nossa API. Assim saberemos que é você quem está fazendo uma requisição a nós. \
-
+Com o seu Token de Acesso, você poderá **se autenticar** nos **endpoints** da nossa API. Assim saberemos que é você quem está fazendo uma requisição a nós. <br>
 
 <figure><img src="https://github.com/AmandaAmani/documenta-ocurso/blob/main/integra%C3%A7%C3%A3o%20sem%20url.gif?raw=true" alt="Usuário se autenticando na ferramenta postman com um token copiado da plataforma"><figcaption><p>Autenticação via api token</p></figcaption></figure>
 

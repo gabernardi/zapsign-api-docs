@@ -1,7 +1,6 @@
 # Assinar em lote via API
 
-Se a sua empresa frequentemente precisa assinar muitos documentos, este endpoint oferece uma maneira eficiente de realizar essas assinaturas sem a necessidade de acessar manualmente cada documento. Com a **assinatura em lote, você economiza tempo e automatiza o processo de assinatura de múltiplos documentos!**\
-
+Se a sua empresa frequentemente precisa assinar muitos documentos, este endpoint oferece uma maneira eficiente de realizar essas assinaturas sem a necessidade de acessar manualmente cada documento. Com a **assinatura em lote, você economiza tempo e automatiza o processo de assinatura de múltiplos documentos!**<br>
 
 ### Assinar em lote via API:
 
@@ -100,8 +99,7 @@ Para realizar a assinatura via API, é necessário o `user_token` do usuário qu
 3. No final da página, habilite a assinatura via API.
 4.  Copie o token gerado e cole no parametro user\_token, dentro da request.\
     \
-    \
-
+    <br>
 
     ![Como conseguir seu user token](https://github.com/AmandaAmani/documenta-ocurso/blob/main/user%20token.gif?raw=true)
 

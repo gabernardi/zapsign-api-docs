@@ -195,7 +195,7 @@
 ## Parcerias
 
 * [Atualizar status de pagamento](parcerias/atualizar-status-de-pagamento.md)
-* [API ZapSign: Informações do Plano dos Parceiros (CSV)](parcerias/api-zapsign-informacoes-do-plano-dos-parceiros-csv.md)
+* [Consulta de planos parcerias (CSV)](parcerias/consulta-de-planos-parcerias-csv.md)
 
 ***
 

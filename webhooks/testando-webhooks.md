@@ -31,8 +31,7 @@ Para facilitar o teste de webhooks sem precisar configurar um servidor local, fe
 
 Agora que o webhook está configurado, você precisa gerar um evento que dispare o webhook.
 
-Crie um documento ou acione um evento na ZapSign e verifique o Webhook.site para a requisição POST recebida, que conterá todos os detalhes do evento, como ID do documento, status e payload.\
-
+Crie um documento ou acione um evento na ZapSign e verifique o Webhook.site para a requisição POST recebida, que conterá todos os detalhes do evento, como ID do documento, status e payload.<br>
 
 <figure><img src="../.gitbook/assets/image (5).png" alt="print da tela do webhook.site, com todas as informações enviadas pela ZapSign"><figcaption><p>Confira todos o detalhes enviados pela ZapSign.</p></figcaption></figure>
 

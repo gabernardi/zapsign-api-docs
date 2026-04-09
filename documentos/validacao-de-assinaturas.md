@@ -9,8 +9,7 @@ description: >-
 A ZapSign disponibiliza um endpoint que valida se um PDF foi corretamente assinado e mantido íntegro, assegurando conformidade com padrões de segurança e validade jurídica.&#x20;
 
 \
-Este endpoint permite validar a integridade de assinaturas digitais em um arquivo PDF. A validação confirma se:\
-
+Este endpoint permite validar a integridade de assinaturas digitais em um arquivo PDF. A validação confirma se:<br>
 
 * O PDF contém uma ou mais assinaturas digitais;
 * Todas as assinaturas foram emitidas pela ZapSign;

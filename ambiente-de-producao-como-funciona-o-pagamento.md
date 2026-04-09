@@ -5,8 +5,7 @@ Para utilizar o ambiente de produção, você deverá contratar um plano de API 
 O controle do volume de documentos utilizados deve ser feito do seu lado. Disponibilizaremos apenas o relatório de uso ao final do mês caso tenha ultrapassado o volume de documentos de seu plano.&#x20;
 
 **Atenção: documentos não assinados e documentos excluídos não "recuperam" créditos. Ou seja, uma vez criado, o documento será contabilizado para fins dos Planos de API.**\
-\
-
+<br>
 
 ![Navegue em Configurações>Planos e Preços>planos para conhecer os planos da ZapSign.](https://github.com/AmandaAmani/documenta-ocurso/blob/main/planos%20e%20pre%C3%A7os.gif?raw=true)
 

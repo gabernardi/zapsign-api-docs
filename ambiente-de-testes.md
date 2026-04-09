@@ -29,8 +29,7 @@ O **ambiente de sandbox** reproduz exatamente o ambiente de produção, porém s
 
 
 
-Com seu api token e o endpoint do ambiente sandbox, já é possível disparar seus documentos de testes!\
-
+Com seu api token e o endpoint do ambiente sandbox, já é possível disparar seus documentos de testes!<br>
 
 <figure><img src="https://github.com/AmandaAmani/documenta-ocurso/blob/main/sandbox%20api.gif?raw=true" alt="Usuáriofazendo requisição com endpoint de sandbox"><figcaption><p>Requisição feita com endpoint de sandbox</p></figcaption></figure>
 

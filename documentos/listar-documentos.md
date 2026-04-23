@@ -4,23 +4,101 @@
 Esse endpoint possui um cache com expiração de 60 minutos.
 {% endhint %}
 
-## Listar documentos
+Este endpoint permite listar todos os documentos da sua conta. Por padrão, os resultados são retornados de forma paginada.
 
 <mark style="color:blue;">`GET`</mark> `https://api.zapsign.com.br/api/v1/docs/?page=1`
 
 Esse endpoint permite que você liste todos os documentos da sua conta.
 
-#### Query Parameters
+***
 
-| Name | Type   | Description                                                                                                                                                                                                                                  |
-| ---- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| page | number | Page vai de 1 a N (qualquer número inteiro positivo). Por default, este endpoint retorna a lista de documentos na sua conta ordenada em páginas com 25 documentos cada. Assim, para ir para a próxima página, mude o "page=N" na requisição. |
+#### Parâmetros de URL (Query Params)
+
+| **Parâmetro**     | **Tipo**  | **Descrição**                                                                          |
+| ----------------- | --------- | -------------------------------------------------------------------------------------- |
+| `page`            | `integer` | Número da página para navegação (ex: `?page=2`).                                       |
+| `status`          | `string`  | Filtra por status: `pending` (em curso), `signed` (assinado) ou `refused` (recusado).  |
+| `folder_path`     | `string`  | Filtra documentos em uma pasta específica. Use `/` para a raiz.                        |
+| `deleted`         | `boolean` | `true` para listar apenas excluídos; `false` para ativos.                              |
+| `signer_email`    | `string`  | Filtra documentos que possuam um signatário com este e-mail.                           |
+| `created_from`    | `string`  | Data inicial (formato `YYYY-MM-DD`).                                                   |
+| `created_to`      | `string`  | Data final (formato `YYYY-MM-DD`).                                                     |
+| `sort_order`      | `string`  | Ordenação por data de criação: `asc` (antigos) ou `desc` (novos).                      |
+| `include_signers` | `boolean` | (Novo) Use `true`, `1` ou `yes` para incluir o array de signatários em cada documento. |
+
+***
 
 #### Headers
 
 | Name                                            | Type   | Description                                                                                     |
 | ----------------------------------------------- | ------ | ----------------------------------------------------------------------------------------------- |
 | Authorization<mark style="color:red;">\*</mark> | string | <p>Api token a frente do texto "Bearer". </p><p>Ex: Bearer c7f35c84-7893-4087-b4fb-d1f06c23</p> |
+
+***
+
+#### Detalhes do parâmetro `include_signers`
+
+Ao ativar este parâmetro, a API retornará o campo `signers` dentro de cada documento, contendo informações detalhadas:
+
+* Campos incluídos: Nome, e-mail, telefone, modo de autenticação (`auth_mode`), flag de certificado digital, timestamps de interação, URL de assinatura e ordem de assinatura (caso a ordem esteja ativa).
+* Status do Signatário: Exposto via um enum estável:
+  * `nao_abriu`
+  * `abriu`
+  * `assinou`
+  * `recusou`
+  * `expirou`
+  *   `cancelado`
+
+      _(Nota: Status do documento têm precedência sobre o status individual quando aplicável)._
+
+***
+
+#### Observações importantes
+
+* Consistência JSON: Strings vazias são normalizadas para `null` no retorno da API.
+* Performance Otimizada: O endpoint utiliza `prefetch_related` para evitar problemas de N+1 queries ao solicitar os signatários, garantindo respostas rápidas mesmo em listagens volumosas.
+* Links Temporários: Os campos `original_file` e `signed_file` retornam links que expiram em 60 minutos.
+* Cache: Há um cache de 60 segundos para este endpoint. Se você acabou de criar um documento, ele pode levar até um minuto para aparecer nesta lista.
+
+***
+
+#### Exemplo de Resposta (JSON)
+
+exemplo com `include_signers = True`
+
+```json
+{
+    "count": 120,
+    "next": "https://api.zapsign.com.br/api/v1/docs/?page=2",
+    "previous": null,
+    "results": [
+        {
+            "token": "4f9e-a1b2-c3d4",
+            "name": "Contrato de Prestação de Serviços",
+            "status": "pending",
+            "original_file": "https://s3.amazonaws.com/...",
+            "signed_file": null,
+            "created_at": "2024-03-25T14:30:00Z",
+            "folder_path": "/",
+            "signers": [
+                {
+                    "name": "João Silva",
+                    "email": "joao@email.com",
+                    "status": "abriu",
+                    "auth_mode": "assinatura_tela",
+                    "signing_url": "https://zapsign.com.br/sign/...",
+                    "has_certificate": false,
+                    "order": 1
+                }
+            ]
+        }
+    ]
+}
+
+
+```
+
+exemplo sem `include_signers`&#x20;
 
 {% tabs %}
 {% tab title="200 Documentos listados." %}
@@ -61,98 +139,10 @@ Esse endpoint permite que você liste todos os documentos da sua conta.
 {% endtab %}
 {% endtabs %}
 
-### Filtrando documentos de uma pasta
-
-Caso você deseje filtrar apenas documentos de uma determinada pasta, acrescente ao GET o parâmetro opcional "folder\_path". Por exemplo:
-
-**Todos documentos da conta (sem filtro de pasta):**\
-https://api.zapsign.com.br/api/v1/docs/?page=1
-
-**Filtrando somente documentos Sem pasta (ou seja, na raiz "/"):**\
-https://api.zapsign.com.br/api/v1/docs/?page=&#x31;**\&folder\_path=/**
-
-**Filtrando somente documentos na pasta "/api/pasta2/":**\
-https://api.zapsign.com.br/api/v1/docs/?page=&#x31;**\&folder\_path=/api/pasta2/**
-
-### Filtrando documentos excluídos ou não excluídos
-
-Caso você deseje filtrar apenas documentos excluídos ou não excluídos, acrescente ao GET o parâmetro opcional "deleted". Por exemplo:
-
-**Apenas documentos não excluídos:**\
-https://api.zapsign.com.br/api/v1/docs/?page=&#x31;**\&deleted=false**
-
-**Apenas documentos excluídos:**\
-https://api.zapsign.com.br/api/v1/docs/?page=&#x31;**\&deleted=true**
-
-### Filtrando por signatários
-
-Caso você queira filtrar por signatário, acrescente ao GET o parâmetro opcional "signer\_email". Por exemplo:
-
-**Por e-mail do signatário:**\
-https://api.zapsign.com.br/api/v1/docs/?page=&#x31;**\&signer\_email=email@zapsign.com.br**
-
-### Filtrando documentos por status
-
-Caso você deseje filtrar documentos assinados, em curso ou recusados, acrescente ao GET o parâmetro opcional "status". Por exemplo:
-
-**Apenas documentos assinados:**\
-https://api.zapsign.com.br/api/v1/docs/?page=&#x31;**\&status=signed**
-
-**Apenas documentos em curso:**\
-https://api.zapsign.com.br/api/v1/docs/?page=&#x31;**\&status=pending**
-
-**Apenas documentos recusados:**\
-https://api.zapsign.com.br/api/v1/docs/?page=&#x31;**\&status=refused**
-
-### Filtrando documentos por data de criação
-
-Caso você deseje filtrar documentos por data de criação, acrescente ao GET os parâmetros opcionais "created\_from" e "created\_to", com o formato YYYY-MM-DD. Por exemplo:
-
-**Apenas documentos criados em janeiro de 2024:**\
-https://api.zapsign.com.br/api/v1/docs/?page=&#x31;**&**&#x63;reated\_fro&#x6D;**=2024-01-01\&created\_to=2024-01-30**
-
-### Ordenando a resposta da requisição
-
-Caso você deseje ordenar a resposta da listagem dos documentos por data de criação, acrescente ao GET o parâmetro opcional "sort\_order". Por exemplo:
-
-**Ordenando documentos em ordem ascendente:**\
-https://api.zapsign.com.br/api/v1/docs/?page=&#x31;**&**&#x73;ort\_orde&#x72;**=asc**
-
-**Ordenando documentos em ordem descendente:**\
-https://api.zapsign.com.br/api/v1/docs/?page=&#x31;**&**&#x73;ort\_orde&#x72;**=desc**
-
-
-
-
-
 {% hint style="info" %}
 **Dica:** em vez de consultar os documentos várias vezes ao dia, utilize nossos [webhooks](https://docs.zapsign.com.br/webhooks/como-funciona). Além de ser uma economia da capacidade computacional dos nossos e seus servidores, você também conseguirá dar um feedback em tempo real ao seu usuário, e não a cada N minutos.
 {% endhint %}
 
-### Exemplo de resposta
-
 {% hint style="warning" %}
 **Atenção**: os links retornados em **original\_file** e **signed\_file** são temporários e duram **60 minutos**. Caso seu sistema necessite salvar estes links é recomendado que sejam baixados em uma CDN própria ou que este endpoint seja consultado sempre para garantir que seu usuário sempre receberá um link válido.
 {% endhint %}
-
-```javascript
-{
-    "count": 336,
-    "next": "https://api.zapsign.com.br/api/v1/docs/?api_token=xxxx&page=4",
-    "previous": "https://api.zapsign.com.br/api/v1/docs/?api_token=xxxx&page=2",
-    "results": [
-        {
-            "open_id": 201,
-            "token": "373xxxx-5f7e-4218-917e-9b6f6f7b2aa1",
-            "status": "signed",
-            "name": "Contrato X.pdf",
-            "original_file": "https://zapsign.s3.amazonaws.com/docs/f8d1e963-f4ce-471b-xxxxxfd6e43f6/60eexxxxxc1-9410-81a769ea53b5.pdf",
-            "signed_file": "https://zapsign.s3.amazonaws.com/pdf/582a15yyyyy42-f105291252e1.pdf",
-            "created_at": "2020-04-02T13:52:21.948145Z",
-            "last_update_at": "2020-04-02T16:10:30.780585Z",
-            "created_through": "web"
-        },
-        ...
-    ]
-}
-```

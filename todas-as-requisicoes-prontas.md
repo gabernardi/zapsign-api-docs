@@ -11,7 +11,7 @@ Utilizando o Postman
 
 Você pode economizar muito tempo utilizando as requisições já prontas do Postman.
 
-{% embed url="https://elements.getpostman.com/redirect?entityId=27495556-787b914f-ebeb-426a-9808-7fb0bd0d47fd&entityType=collection" %}
+{% embed url="https://www.postman.com/zapsign/zapsign-workspace/collection/ahoeua1/api-public?sideView=agentMode" %}
 Link para o workspace contendo todas as requisições publicas
 {% endembed %}
 

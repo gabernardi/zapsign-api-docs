@@ -7,16 +7,16 @@ description: >-
 # ZapSign Developer Docs
 
 {% columns %}
-{% column width="58.333333333333336%" %}
+{% column width="66.66666666666666%" %}
 **Integre com a ZapSign em minutos.**
 
-Automatize fluxos de assinatura eletrônica no seu produto com uma API simples de implementar. Crie, envie e acompanhe documentos com segurança, visibilidade de status e validade jurídica — sem depender de processos manuais.
-
 **Uma chamada de API. Documentos prontos para assinatura eletrônica, integrados ao seu fluxo do início ao fim.**
+
+Crie, envie e acompanhe documentos com segurança, visibilidade de status e validade jurídica — sem depender de processos manuais.
 {% endcolumn %}
 
-{% column width="41.666666666666664%" %}
-<figure><img src=".gitbook/assets/shield-3d.webp" alt="" width="375"><figcaption></figcaption></figure>
+{% column width="33.33333333333334%" %}
+<figure><img src=".gitbook/assets/shield-3d.webp" alt=""><figcaption></figcaption></figure>
 {% endcolumn %}
 {% endcolumns %}
 

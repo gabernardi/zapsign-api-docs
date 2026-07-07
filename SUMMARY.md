@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Informações gerais](README.md)
+* [ZapSign Developer Docs](README.md)
 * [Como começar](como-comecar.md)
 * [Ambiente de testes](ambiente-de-testes.md)
 * [Todas as requisições prontas!](todas-as-requisicoes-prontas.md)

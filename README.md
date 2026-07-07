@@ -10,7 +10,7 @@ description: >-
 {% column width="66.66666666666666%" %}
 **Integre com a ZapSign em minutos.**
 
-**Uma chamada de API. Documentos prontos para assinatura eletrônica, integrados ao seu fluxo do início ao fim.**
+Uma chamada de API. Documentos prontos para assinatura eletrônica, integrados ao seu fluxo do início ao fim.
 
 Crie, envie e acompanhe documentos com segurança, visibilidade de status e validade jurídica — sem depender de processos manuais.
 {% endcolumn %}

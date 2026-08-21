@@ -71,7 +71,6 @@ Defina seu documento com a classe [DocFromPdf](../classes-usadas/body/docfrompdf
 
 ```
 DocFromPdf docFromPdf = DocFromPdf.docFromPdfBuilder()
-                .sandbox(false)
                 .name("My Contract")
                 .brand_primary_color("#000000")
                 .lang("pt-br")
@@ -130,7 +129,6 @@ public class CreateDocFromUploadPdf {
         signers.add(signer2);
 
         DocFromPdf docFromPdf = DocFromPdf.docFromPdfBuilder()
-                .sandbox(false)
                 .name("My Contract")
                 .brand_primary_color("#000000")
                 .lang("pt-br")

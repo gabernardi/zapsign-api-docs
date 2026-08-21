@@ -114,7 +114,6 @@ let signers: Signer[] = [];
 signers.push(signer1, signer2);
 
 const docFromPdf: DocFromPdf = new DocFromPdfBuilder()
-                                .withSandbox(false)
                                 .withName("My Contract")
                                 .withBrandLogo("#000000")
                                 .withLang("pt-br")

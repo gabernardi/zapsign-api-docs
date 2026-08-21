@@ -78,7 +78,6 @@ Defina seu documento com a classe [DocFromPdfBase64](../classes-usadas/body/docf
 
 ```
 DocFromPdfBase64 docFromPdfBase64 = DocFromPdfBase64.docFromPdfBase64Builder()
-                .sandbox(false)
                 .name("My Contract")
                 .brand_primary_color("#000000")
                 .lang("pt-br")
@@ -138,7 +137,6 @@ public class CreateDocFromBase64PdfAssync {
         signers.add(signer2);
 
         DocFromPdfBase64 docFromPdfBase64 = DocFromPdfBase64.docFromPdfBase64Builder()
-                .sandbox(false)
                 .name("My Contract")
                 .brand_primary_color("#000000")
                 .lang("pt-br")

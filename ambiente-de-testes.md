@@ -6,10 +6,10 @@ description: >-
 
 # Ambiente de testes
 
-A ZapSign oferece **dois ambientes globais para utilização da API.** Apenas o [ambiente de produção](https://app.zapsign.com.br/acesso/entrar) exige um plano API para ser utilizado.&#x20;
+A ZapSign oferece **dois ambientes globais para utilização da API:** produção e sandbox (ambiente de testes)**.** Apenas o [ambiente de produção](https://app.zapsign.com.br/acesso/entrar) possui validade jurídica e exige um plano API para ser utilizado.
 
 {% hint style="warning" %}
-**Lembre-se:** Os **endpoints** fornecidos **são para integração** com a **API** e **não** são acessáveis diretamente pelo navegador da web. Para acessar a interface via navegador ou criar uma conta, visite: [https://sandbox.app.zapsign.com.br/acesso/entrar](https://sandbox.app.zapsign.com.br/acesso/entrar)&#x20;
+**Lembre-se:** Os **endpoints** fornecidos **são para integração** com a **API** e **não** podem ser acessados diretamente pelo navegador da web. Para acessar a interface via navegador ou criar uma conta em Sandbox, visite: [https://sandbox.app.zapsign.com.br/acesso/entrar](https://sandbox.app.zapsign.com.br/acesso/entrar)&#x20;
 {% endhint %}
 
 <table><thead><tr><th width="132">Ambiente</th><th width="348">                       Endpoint</th><th>Validade Jurídica</th></tr></thead><tbody><tr><td>Sandbox</td><td>https://sandbox.api.zapsign.com.br/api/v1/</td><td>Não possui validade jurídica</td></tr><tr><td>Produção</td><td>https://api.zapsign.com.br/api/v1/</td><td>Possui validade jurídica</td></tr></tbody></table>
@@ -32,10 +32,6 @@ O **ambiente de sandbox** reproduz exatamente o ambiente de produção, porém s
 Com seu api token e o endpoint do ambiente sandbox, já é possível disparar seus documentos de testes!<br>
 
 <figure><img src="https://github.com/AmandaAmani/documenta-ocurso/blob/main/sandbox%20api.gif?raw=true" alt="Usuáriofazendo requisição com endpoint de sandbox"><figcaption><p>Requisição feita com endpoint de sandbox</p></figcaption></figure>
-
-{% hint style="info" %}
-Não é necessário incluir o parâmetro `sandbox=true` nas suas requisições para utilizar o ambiente de testes (sandbox). Basta utilizar as URLs específicas para o ambiente sandbox ou utilizar os ambientes pré-definidos da seção ["Todas as requisições prontas".](todas-as-requisicoes-prontas.md)&#x20;
-{% endhint %}
 
 
 

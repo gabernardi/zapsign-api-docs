@@ -71,7 +71,6 @@ Defina seu documento com a classe [DocFromDocx](../classes-usadas/body/docfromdo
 
 ```typescript
 DocFromDocx docFromDocx: = DocFromDocx.docFromDocxBuilder()
-                .sandbox(false)
                 .name("My Contract")
                 .brand_primary_color("#000000")
                 .lang("pt-br")
@@ -130,7 +129,6 @@ public class CreateDocFromUploadDocx {
         signers.add(signer2);
 
         DocFromDocx docFromDocx = DocFromDocx.docFromDocxBuilder()
-                .sandbox(false)
                 .name("My Contract")
                 .brand_primary_color("#000000")
                 .lang("pt-br")

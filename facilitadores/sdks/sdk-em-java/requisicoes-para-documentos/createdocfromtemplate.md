@@ -70,7 +70,6 @@ Defina seu documento com a classe [DocFromTemplate](../classes-usadas/body/docfr
 
 ```
 DocFromTemplate docFromTemplate = DocFromTemplate.docFromTemplateBuilder()
-                .sandbox(false)
                 .brand_primary_color("#000000")
                 .lang("pt-br")
                 .signer_name("My Signer for template")
@@ -129,7 +128,6 @@ public class CreateDocFromTemplate {
         deParaTemplates.add(deParaTemplateEnd);
 
         DocFromTemplate docFromTemplate = DocFromTemplate.docFromTemplateBuilder()
-                .sandbox(false)
                 .brand_primary_color("#000000")
                 .lang("pt-br")
                 .signer_name("My Signer for template")

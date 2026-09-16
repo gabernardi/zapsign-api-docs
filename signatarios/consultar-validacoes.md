@@ -3,7 +3,6 @@ description: >-
   Este endpoint retorna todas as tentativas de validação de identidade
   realizadas por um signatário, incluindo o status, motivo de falha (se houver)
   e as informações extraídas do documento.
-hidden: true
 ---
 
 # Consultar validações
@@ -12,15 +11,13 @@ hidden: true
 
 #### Headers
 
-<table><thead><tr><th width="162">Name</th><th width="128">Type</th><th>Description</th></tr></thead><tbody><tr><td>Authorization<mark style="color:red;">*</mark></td><td>string</td><td><p>Api token a frente do texto "Bearer". </p><p>Ex: Bearer c7f35c84-7893-4087-b4fb-d1f06c23</p></td></tr></tbody></table>
+<table><thead><tr><th width="162">Name</th><th width="128">Type</th><th>Description</th></tr></thead><tbody><tr><td>Authorization<mark style="color:red;">*</mark></td><td>string</td><td><p>Api token a frente do texto "Bearer".</p><p>Ex: Bearer c7f35c84-7893-4087-b4fb-d1f06c23</p></td></tr></tbody></table>
 
-### Exemplo response
+### Respostas
 
-{% hint style="warning" %}
-O endpoint retorna todas as tentativas feitas pelo signatário, permitindo acompanhar o histórico de validações e entender possíveis motivos de falha.
-{% endhint %}
-
-```
+{% tabs %}
+{% tab title="200 — Sucesso" %}
+```json
 {
     "token": "0abe0677-72d7-4816-9ba8-317145d387ea",
     "selfie_validation_type": "identity-verification-global",
@@ -48,16 +45,25 @@ O endpoint retorna todas as tentativas feitas pelo signatário, permitindo acomp
             "type": "Name validation",
             "status": "success",
             "reason": "",
-            "created_at": "2025-06-05T18:51:26.286366Z",
-        },
+            "created_at": "2025-06-05T18:51:26.286366Z"
+        }
     ]
 }
-
 ```
+{% endtab %}
+
+{% tab title="404 — Não encontrado" %}
+```json
+{
+    "error": "Signer not found"
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ### Sobre o resultado da validação
 
-Este endpoint permite consultar o **resultado do processo de validação** definido no parâmetro `selfie_validation_type`.&#x20;
+Este endpoint permite consultar o **resultado do processo de validação** definido no parâmetro `selfie_validation_type`.
 
 Cada tipo de validação possui **etapas específicas** que verificam diferentes aspectos do documento e/ou do rosto do signatário. Dentro de cada etapa existem **sub-validações**, e para cada uma delas a resposta do endpoint retorna:
 
@@ -76,7 +82,7 @@ Este método realiza duas validações principais
 
 Se as duas validações forem bem-sucedidas, o signatário está autorizado a concluir a assinatura do documento.
 
-#### face-match-and-datavalid&#x20;
+#### face-match-and-datavalid
 
 _Disponível apenas para Brasil – CNH._ Este método realiza uma única validação:
 
@@ -96,10 +102,9 @@ Este método realiza três validações complementares:
 * **Name validation:** compara o nome extraído do documento com o nome informado pelo signatário. A validação é considerada aprovada se a similaridade for maior que 75%.
 * **Validação de CPF** (Brasil): quando o documento for do Brasil e contiver CPF, é feita uma verificação automática junto à Receita Federal.
 
-#### identity-verification&#x20;
+#### identity-verification
 
 _Disponível para Colômbia, México, Chile e Peru._ Este método realiza duas validações:
 
 * **Identity verification**: valida que o documento é real com modelos de fraude, realiza consulta em bases de dados do governo e garante que o vídeo passivo corresponda à mesma pessoa do documento.
 * **Name validation:** compara o nome extraído do documento com o nome informado pelo signatário, aplicando a mesma lógica de similaridade usada no método _identity-verification-global_.
-

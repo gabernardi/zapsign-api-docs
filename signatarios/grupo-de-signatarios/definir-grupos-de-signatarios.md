@@ -1,17 +1,41 @@
-# Definir grupos de signatários
+# Definir Grupos de Signatários
 
-Grupos de signatários permitem definir diferentes conjuntos de pessoas que devem assinar um documento, com possibilidade de configurar uma ordem de assinatura entre os grupos.\
-A definição de grupos agora é feita diretamente no payload do endpoint de criação de documentos, sem necessidade de chamadas adicionais.\
-\
-Como configurar grupos de signatários no payload de criação de documento\
-Utilize os seguintes campos para configurar os grupos e a ordem de assinatura:
+Grupos de signatários permitem definir diferentes conjuntos de pessoas que devem assinar um documento, com a possibilidade de configurar uma ordem de assinatura entre esses grupos.
 
-* _`signature_order_active`_ : define se a ordem de assinatura será sequencial (true para ativar).
-* _`order_group`_ : número que representa a ordem de assinatura do grupo (ex: 1, 2, 3...).
+A definição dos grupos e de suas regras é feita diretamente no payload do endpoint de criação de documentos, sem a necessidade de chamadas adicionais à API.
 
-## Criar grupos de signatários
+### Como Funciona o Fluxo de Grupos?
 
-<mark style="color:green;">`POST`</mark> [`https://api.zapsign.com.br/api/v1/doc/`](https://api.zapsign.com.br/api/v1/doc)
+1. Agrupamento: Você vincula os signatários a um grupo específico através do campo `order_group`.
+2. Ordem de Assinatura: Se a propriedade `signature_order_active` for `true`, o documento só será liberado para o grupo seguinte (ex: `order_group: 2`) após as condições de assinatura do grupo anterior (ex: `order_group: 1`) serem totalmente retidas.
+3. Paralelismo: Signatários que estão no mesmo `order_group` recebem a notificação e podem assinar o documento simultaneamente.
+
+
+
+**⚠️ Regras de Validação para `minimum_signatures_required`:**
+
+* Não pode ser igual a zero.
+* Não pode ser maior do que a quantidade de signatários configurados para aquele `order_group`.
+
+### Parâmetros do Payload
+
+Abaixo estão os campos específicos utilizados para estruturar e gerenciar os grupos:
+
+#### Campos Globais
+
+* `signature_order_active` _(boolean)_: Define se a ordem de assinatura entre os grupos será sequencial. Envie `true` para ativar o fluxo ordenado ou `false` para liberar a assinatura para todos ao mesmo tempo.
+
+#### Campos do Objeto `signers` (Array)
+
+Dentro de cada objeto de signatário, utilize o campo abaixo para definir a qual grupo ele pertence:
+
+* `order_group` _(integer)_: Número que representa o grupo de assinatura daquele signatário (ex: `1`, `2`, `3`...).
+
+
+
+## Criar documento com Grupos de Signatários
+
+<mark style="color:green;">`POST`</mark> [`https://api.zapsign.com.br/api/v1/docs/`](https://api.zapsign.com.br/api/v1/doc)
 
 <table><thead><tr><th width="161">Name</th><th width="128">Type</th><th>Description</th></tr></thead><tbody><tr><td>Authorization<mark style="color:red;">*</mark></td><td>string</td><td><p>Api token a frente do texto "Bearer". </p><p>Ex: Bearer c7f35c84-7893-4087-b4fb-d1f06c23</p></td></tr></tbody></table>
 
@@ -26,16 +50,25 @@ Utilize os seguintes campos para configurar os grupos e a ordem de assinatura:
 | send\_automatic                       | boolean          | Envia automaticamente após a criação                 |
 | lang                                  | string           | Idioma do fluxo (`pt`, `en`, `es`, ...)              |
 | disable\_signer\_emails               | boolean          | Desativa o envio de e-mails aos signatários          |
-| brand\_logo                           | string           | URL do logotipo personalizado (opcional)             |
+| brand\_logo                           | string           | (opcional) URL do logotipo personalizado             |
 | brand\_primary\_color                 | string           | Cor principal personalizada (ex: `#000000`)          |
 | brand\_name                           | string           | Nome da marca exibido                                |
 | created\_by                           | string           | E-mail de quem criou o documento                     |
 | date\_limit\_to\_sign                 | string (ISO8601) | Data limite para assinatura (`YYYY-MM-DDTHH:mm:ssZ`) |
 | signature\_order\_active              | boolean          | Define se há ordem de assinatura entre grupos        |
 | observers                             | Array            | Lista de e-mails de observadores                     |
-| reminder\_every\_n\_days              | number           | Envia lembrete a cada N dias (opcional)              |
+| reminder\_every\_n\_days              | number           | (opcional) Envia lembrete a cada N dias              |
 | allow\_refuse\_signature              | boolean          | Permite recusar assinatura                           |
 | disable\_signers\_get\_original\_file | boolean          | Impede que signatários acessem o PDF final           |
+| signature\_groups                     | Array            | (opcional) Lista de grupos de signatários            |
+
+
+
+**Propriedades de signature\_groups**
+
+<table><thead><tr><th>Name</th><th width="198">Type</th><th>Description</th></tr></thead><tbody><tr><td>order_group</td><td>string</td><td>order_group do grupo a ser modificado</td></tr><tr><td>title</td><td>string</td><td>Nome do grupo</td></tr><tr><td>minimum_signatures_required</td><td>string</td><td>(opcional) Número mínimo de assinaturas</td></tr></tbody></table>
+
+
 
 **Propriedades de signers**
 
@@ -108,6 +141,17 @@ Utilize os seguintes campos para configurar os grupos e a ordem de assinatura:
       "lock_email": false
     }
   ],
+  "signature_groups": [
+    {
+      "order_group": 1,
+      "title": "Primeiro Grupo",
+      "minimum_signatures_required": 1,
+    },
+    {
+      "order_group": 2,
+      "title": "Segundo Grupo",
+    }
+  ]
   "send_automatic": true,
   "lang": "pt",
   "disable_signer_emails": false,

@@ -163,7 +163,7 @@
 * [Excluir signatário](signatarios/excluir-signatario.md)
 * [Resetar tentativas de validação](signatarios/reset-signer-attempts.md)
 * [Grupo de signatários](signatarios/grupo-de-signatarios/README.md)
-  * [Definir grupos de signatários](signatarios/grupo-de-signatarios/definir-grupos-de-signatarios.md)
+  * [Definir Grupos de Signatários](signatarios/grupo-de-signatarios/definir-grupos-de-signatarios.md)
   * [Excluir grupos de signatários](signatarios/grupo-de-signatarios/excluir-grupos-de-signatarios.md)
 * [Consultar validações](signatarios/consultar-validacoes.md)
 * [Assinar em lote via API](signatarios/assinar-em-lote-via-api.md)

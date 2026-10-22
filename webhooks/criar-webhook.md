@@ -69,7 +69,7 @@ Você também pode criar seus endpoints via API, ajustando os cabeçalhos e even
     "headers": [
         {
             "name": "Authorization",
-            "value": "Bearer SEU_TOKEN_API"
+            "value": "Bearer SEGREDO_DO_RECEPTOR"
         }
     ]
 }
@@ -99,7 +99,7 @@ Verifique se seu API TOKEN está correto.
 
 ### Configurando headers para webhooks
 
-Também é possível implementar headers nos webhooks, garantindo maior segurança no envio de dados e otimizando o desempenho entre as aplicações.<br>
+Você pode configurar cabeçalhos personalizados e validar seu valor no servidor que recebe o webhook. Use um segredo exclusivo do receptor, definido por você. Não reutilize a credencial da API ZapSign como esse segredo. O Authorization da requisição usada para criar ou atualizar o webhook autentica sua integração na ZapSign; o Authorization dentro de headers será enviado ao seu receptor. São credenciais distintas.
 
 **Webhook** - raiz do JSON:
 
@@ -111,7 +111,11 @@ Também é possível implementar headers nos webhooks, garantindo maior seguran�
 
     * **value (string)** - Valor do cabeçalho HTTP a ser enviado.&#x20;
 
-    &#x20;     **Ex:** Bearer SEU\_TOKEN\_DE\_AUTENTICACAO<br>
+
+
+    ```
+      Ex: Bearer SEGREDO_DO_RECEPTOR
+    ```
 
 <mark style="color:green;">`POST`</mark>` ``{{api_url}}/api/v1/user/company/webhook/header/`
 
@@ -121,7 +125,7 @@ Também é possível implementar headers nos webhooks, garantindo maior seguran�
     "headers": [
         {
             "name": "Authorization",
-            "value": "Bearer YOUR_AUTHENTICATION_TOKEN"
+            "value": "Bearer SEGREDO_DO_RECEPTOR"
         }
     ]
 }

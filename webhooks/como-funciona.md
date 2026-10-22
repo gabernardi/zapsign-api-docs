@@ -9,7 +9,7 @@ Webhooks **são notificações automáticas essenciais para a integração entre
 * <mark style="background-color:blue;">**Automatizar Processos Pós-Evento**</mark><mark style="background-color:blue;">,</mark> para que tarefas subsequentes sejam feitas automaticamente!
 
 {% hint style="info" %}
-<mark style="color:red;">**Preciso ter um Plano de API para usar webhooks?**</mark>**&#x20;Não**, os webhooks estão disponíveis **gratuitamente para todos os usuários.** No entanto, recomendamos fortemente que os usuários da API utilizem webhooks em vez de fazer polling.
+Como confirmar a disponibilidade de webhooks? A disponibilidade de webhooks depende do plano, do mercado e das condições da sua conta. Consulte a página oficial de Planos e Preços do seu mercado (https://zapsign.com.br/planos-pre%C3%A7os) e confirme a habilitação em Configurações > Integrações > API ZapSign. Não presuma que o recurso seja gratuito ou esteja incluído em todas as contas. Para integrações, recomendamos usar webhooks para acompanhar eventos, reduzindo consultas repetitivas à API.
 {% endhint %}
 
 ***
